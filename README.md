@@ -2,13 +2,14 @@
   
 # Custom x86 Bootloader
 
-**A x86 bootloader with USB driver support, written from scratch.**
+**x86 bootloader with USB driver support**
 
 | Start Date  | End Date |
 | ------------- | ------------- |
 | December 5, 2025  | Unknown  |
 
 </div>
+<p>A bootloader written from scratch that loads a second-stage loader, prints messages in both 16-bit and 32-bit modes, switches to protected mode, and lays the foundation for USB driver support.</p>
 
 ## Requirements
 - x86_64-elf Cross-Compiler
