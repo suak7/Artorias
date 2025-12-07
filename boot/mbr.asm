@@ -58,7 +58,7 @@ continue_boot:
 
     mov dl, [boot_drive - load_address + relocate_address]
 
-    ; jump to stage 2 Bootloader
+    ; jump to stage 2 bootloader
     jmp 0x0000:stage2_address                    
 
 disk_error:

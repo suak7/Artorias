@@ -11,7 +11,7 @@ print32_string:
     add edx, eax               ; edx = video memory + offset     
 
 .print32_loop:
-    mov al, [EBX]              ; load character from string                  
+    mov al, [ebx]              ; load character from string                  
     cmp al, 0                       
     je .end_print32_loop                        
     
