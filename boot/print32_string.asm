@@ -55,7 +55,6 @@ print32_hex:
     
     mov ebx, hex_prefix_str
     call print32_string
-    call print32_newline
     
     mov ecx, 8                      
     mov edi, eax                    
@@ -91,7 +90,6 @@ print32_hex:
     
     mov ebx, space_str
     call print32_string
-    call print32_newline
     
     popad
     ret
