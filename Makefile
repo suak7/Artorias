@@ -15,7 +15,8 @@ STAGE2_SRC := $(BOOT_DIR)/stage2.asm
 STAGE2_DEPS := $(BOOT_DIR)/print16_string.asm \
                $(BOOT_DIR)/print32_string.asm \
                $(BOOT_DIR)/gdt.asm \
-               $(BOOT_DIR)/switch_to_pm.asm
+               $(BOOT_DIR)/switch_to_pm.asm \
+               $(BOOT_DIR)/pci.asm
 
 all: $(DISK_IMG)
 
@@ -37,4 +38,4 @@ run: $(DISK_IMG)
 clean:
 	@rm -rf $(BUILD_DIR) $(IMAGE_DIR)
 
-.PHONY: all clean run 
+.PHONY: all clean run
