@@ -19,10 +19,10 @@ DISK_IMG := $(IMAGE_DIR)/boot.img
 MBR_SRC := $(BOOT_DIR)/mbr.asm
 STAGE2_SRC := $(BOOT_DIR)/stage2.asm
 KERNEL_ENTRY_SRC := $(KERNEL_DIR)/kernel_entry.asm
-KERNEL_C_SRC := $(KERNEL_SRC_DIR)/kernel.c
+KERNEL_C_SRC := $(wildcard $(KERNEL_SRC_DIR)/*.c)
 
 KERNEL_ENTRY_OBJ := $(BUILD_DIR)/kernel_entry.o
-KERNEL_C_OBJ := $(BUILD_DIR)/kernel.o
+KERNEL_C_OBJ := $(patsubst $(KERNEL_SRC_DIR)/%.c,$(BUILD_DIR)/%.o,$(KERNEL_C_SRC))
 KERNEL_ELF := $(BUILD_DIR)/kernel.elf
 
 STAGE2_DEPS := $(BOOT_DIR)/print16_string.asm \
