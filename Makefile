@@ -9,6 +9,7 @@ BUILD_DIR := build
 IMAGE_DIR := images
 BOOT_DIR := boot
 KERNEL_DIR := kernel
+KERNEL_SRC_DIR := $(KERNEL_DIR)/src
 
 MBR_BIN := $(BUILD_DIR)/mbr.bin
 STAGE2_BIN := $(BUILD_DIR)/stage2.bin
@@ -18,7 +19,7 @@ DISK_IMG := $(IMAGE_DIR)/boot.img
 MBR_SRC := $(BOOT_DIR)/mbr.asm
 STAGE2_SRC := $(BOOT_DIR)/stage2.asm
 KERNEL_ENTRY_SRC := $(KERNEL_DIR)/kernel_entry.asm
-KERNEL_C_SRC := $(KERNEL_DIR)/kernel.c
+KERNEL_C_SRC := $(KERNEL_SRC_DIR)/kernel.c
 
 KERNEL_ENTRY_OBJ := $(BUILD_DIR)/kernel_entry.o
 KERNEL_C_OBJ := $(BUILD_DIR)/kernel.o
@@ -45,7 +46,7 @@ LDFLAGS := -m elf_i386 \
 
 all: $(DISK_IMG)
 
-$(BUILD_DIR) $(IMAGE_DIR) $(KERNEL_DIR):
+$(BUILD_DIR) $(IMAGE_DIR) $(KERNEL_SRC_DIR):
 	@mkdir -p $@
 
 $(MBR_BIN): $(MBR_SRC) | $(BUILD_DIR)
@@ -54,10 +55,10 @@ $(MBR_BIN): $(MBR_SRC) | $(BUILD_DIR)
 $(STAGE2_BIN): $(STAGE2_SRC) $(STAGE2_DEPS) | $(BUILD_DIR)
 	$(ASM) -f bin $< -o $@ -I $(BOOT_DIR)/
 
-$(KERNEL_ENTRY_OBJ): $(KERNEL_ENTRY_SRC) | $(BUILD_DIR) check-toolchain
+$(KERNEL_ENTRY_OBJ): $(KERNEL_ENTRY_SRC) | $(BUILD_DIR) 
 	$(ASM) -f elf32 $< -o $@
 
-$(KERNEL_C_OBJ): $(KERNEL_C_SRC) | $(BUILD_DIR) check-toolchain
+$(KERNEL_C_OBJ): $(KERNEL_C_SRC) | $(BUILD_DIR) 
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(KERNEL_ELF): $(KERNEL_ENTRY_OBJ) $(KERNEL_C_OBJ) | $(BUILD_DIR)
@@ -75,4 +76,4 @@ run: $(DISK_IMG)
 clean:
 	@rm -rf $(BUILD_DIR) $(IMAGE_DIR)
 
-.PHONY: all clean run check-toolchain
+.PHONY: all clean run 
