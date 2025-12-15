@@ -20,8 +20,7 @@ uint32_t pci_read(uint8_t bus, uint8_t slot, uint8_t func, uint8_t offset)
 }
 
 void pci_enumerate(void)
-{
-    uint32_t previous_device_id = 0;  
+{ 
 
     for (uint8_t bus = 0; bus < 1; bus++)
     {
@@ -32,13 +31,7 @@ void pci_enumerate(void)
             if ((id & 0xFFFF) == 0xFFFF) 
             {
                 continue;  
-            }
-
-            if (id == previous_device_id)
-            {
-                continue;
-            }
-            previous_device_id = id;  
+            }  
 
             uint32_t class_info = pci_read(bus, slot, 0, PCI_CLASS_INFO);
 
