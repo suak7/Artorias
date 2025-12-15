@@ -16,7 +16,7 @@
 <p>The bare-metal x86 boot system starts from the master boot record (MBR), loads a second-stage bootloader, transitions to 32-bit protected mode, and executes a C kernel. PCI enumeration and USB controller initialization (EHCI) are under active development.</p>
 
 ## Requirements
-- x86_64-elf Cross-Compiler
+- GCC Cross-Compiler (i686-elf-gcc)
 - GNU Make
 - NASM 
 - QEMU
@@ -25,7 +25,9 @@
 ```bash
 make all    # Build boot sector and disk image
 make run    # Run in QEMU
+make clean  # Clean build artifacts
 ```
+> The 'make run' command attaches a virtual USB EHCI controller to QEMU to test the driver logic.
 
 ## Resources
 - [Rolling Your Own Bootloader - OSDev Wiki](<https://wiki.osdev.org/Rolling_Your_Own_Bootloader>)
