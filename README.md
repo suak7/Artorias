@@ -27,7 +27,7 @@ make all    # Build boot sector and disk image
 make run    # Run in QEMU
 make clean  # Clean build artifacts
 ```
-> The 'make run' command attaches a virtual USB EHCI controller to QEMU to test the driver logic.
+> The ```make run``` command attaches a virtual USB EHCI controller to QEMU to test the driver logic.
 
 ## Resources
 - [Rolling Your Own Bootloader - OSDev Wiki](<https://wiki.osdev.org/Rolling_Your_Own_Bootloader>)
