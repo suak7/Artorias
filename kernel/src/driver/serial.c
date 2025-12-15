@@ -7,6 +7,8 @@ static inline int is_transmit_empty(void)
     return inb(COM1 + 5) & 0x20;
 }
 
+static int serial_initialized = 0;
+
 void serial_init(void) 
 {
     outb(COM1 + 1, 0x00);
@@ -16,10 +18,17 @@ void serial_init(void)
     outb(COM1 + 3, 0x03);
     outb(COM1 + 2, 0xC7);
     outb(COM1 + 4, 0x0B);
+
+    serial_initialized = 1;
 }
 
 void serial_write_char(char c) 
 {
+    if (!serial_initialized) 
+    {
+        return;
+    }
+    
     while (!is_transmit_empty());
     outb(COM1, c);
 }
