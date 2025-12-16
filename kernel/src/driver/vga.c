@@ -1,10 +1,17 @@
 #include "driver/vga.h"
 #include <kernel.h>
+#include <stdint.h>
 
-int vga_row = 0;
-int vga_col = 0;
 
-uint8_t vga_attr = VGA_COLOR(WHITE, BLACK);
+uint8_t vga_attr;
+int vga_row;
+int vga_col;
+
+void vga_init(void) {
+    vga_row = 0;
+    vga_col = 0;
+    vga_attr = VGA_COLOR(WHITE, BLACK);
+}
 
 void vga_print(const char* str) 
 {
@@ -28,7 +35,7 @@ void vga_print(const char* str)
 
         if (vga_row >= 25) 
         {
-            vga_row = 24; 
+            vga_row = 0; 
         }
 
         video[(vga_row * 80 + vga_col) * 2] = *str;
@@ -41,7 +48,7 @@ void vga_print(const char* str)
 
 void vga_print_hex(uint32_t value) 
 {
-    const char* hex = "0123456789ABCDEF";
+    static const char hex[] = "0123456789ABCDEF";
     char buf[9];
     buf[8] = '\0';
     
@@ -56,7 +63,7 @@ void vga_print_hex(uint32_t value)
 
 void vga_print_hex8(uint8_t value) 
 {
-    const char* hex = "0123456789ABCDEF";
+    static const char hex[] = "0123456789ABCDEF";
     char buf[3];
 
     buf[0] = hex[(value >> 4) & 0xF];
