@@ -7,8 +7,6 @@
 #define PCI_CONFIG_DATA 0xCFC
 
 #define PCI_VENDOR_ID 0x00
-#define PCI_DEVICE_ID 0x02
-#define PCI_CLASS 0x0B
 #define PCI_CLASS_INFO 0x08
 #define PCI_SUBCLASS 0x0A
 #define PCI_HEADER_TYPE 0x0E
@@ -34,6 +32,9 @@
 #define EHCI_PORTSC_PR (1 << 7)   
 #define EHCI_PORTSC_PO (1 << 12)  
 #define EHCI_PORTSC_PP (1 << 13) 
+
+#define USB_PORT_POWER_DELAY 100000
+#define USB_PORT_RESET_DELAY 200000
 
 uint32_t pci_read(uint8_t bus, uint8_t slot, uint8_t func, uint8_t offset);
 void pci_enumerate(void);
