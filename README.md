@@ -13,7 +13,7 @@
 
 </div>
 
-<p>The bare-metal x86 boot system starts from the master boot record (MBR), loads a second-stage bootloader, transitions to 32-bit protected mode, and executes a C kernel. PCI enumeration and USB controller initialization (EHCI) are under active development.</p>
+<p>Artorias is a bare-metal x86 boot system that starts from the master boot record (MBR), loads a second-stage bootloader, transitions to 32-bit protected mode, and executes a C kernel with minimal USB driver support.</p>
 
 ## Requirements
 - GCC Cross-Compiler (i686-elf-gcc)
@@ -29,11 +29,16 @@ make clean  # Clean build artifacts
 ```
 > The ```make run``` command attaches a virtual USB EHCI controller to QEMU to test the driver logic.
 
-## Resources
-- [Rolling Your Own Bootloader - OSDev Wiki](<https://wiki.osdev.org/Rolling_Your_Own_Bootloader>)
-- [Writing a Bootloader from Scratch - Carnegie Mellon University](<https://www.cs.cmu.edu/~410-s07/p4/p4-boot.pdf>)
-- [Writing a Simple Operating System from Scratch - Nick Blundell](<https://github.com/tpn/pdfs/blob/master/Writing%20a%20Simple%20Operating%20System%20from%20Scratch%20-%20Nick%20Blundell%20-%20Dec%202010.pdf>) (Visit the 'boot sector programming' section)
+## Limitations
+- Only supports USB 2.0 high-speed devices
+- Doesn't fetch manufacturer/product name through string descriptors
+- No control transfers
 
+## Resources
+- [Writing a Bootloader from Scratch - Carnegie Mellon University](<https://www.cs.cmu.edu/~410-s07/p4/p4-boot.pdf>)
+- [Rolling Your Own Bootloader - OSDev Wiki](<https://wiki.osdev.org/Rolling_Your_Own_Bootloader>)
+- [USB - OSDev Wiki](<https://wiki.osdev.org/Universal_Serial_Bus>)
+- [EHCI - OSDev Wiki](<https://wiki.osdev.org/Enhanced_Host_Controller_Interface>)
 
 ## License
 
