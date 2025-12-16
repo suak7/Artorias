@@ -3,7 +3,8 @@
 
 %define KERNEL_OFFSET 0x1000
 %define KERNEL_SEGMENT 0x0000
-%define KERNEL_SECTORS 16           
+%define KERNEL_SECTORS 16 
+%define VGA_THIRD_LINE_OFFSET 480          
 
 start_stage2:
     mov [boot_drive], dl
@@ -60,7 +61,7 @@ start_stage2:
     call print16_string
     call print16_newline
 
-    mov dword [cursor_pos], 480  
+    mov dword [cursor_pos], VGA_THIRD_LINE_OFFSET 
     
     call switch_to_pm
 
