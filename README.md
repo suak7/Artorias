@@ -23,7 +23,7 @@ _IMPORTANT: Control transfers (device descriptors and string descriptors) are un
   
 </div>
 
-<p>Artorias is a bare-metal x86 32-bit boot system that starts from the master boot record (MBR), loads a second-stage bootloader, transitions to 32-bit protected mode, and executes a C kernel with minimal EHCI (USB 2.0) controller support.</p>
+<p>Artorias is a bare-metal 32-bit x86 boot system that starts from the master boot record (MBR), loads a second-stage bootloader, transitions to 32-bit protected mode, and executes a C kernel with minimal EHCI (USB 2.0) controller support.</p>
 
 ### Table of Contents
 
