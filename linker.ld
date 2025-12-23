@@ -2,22 +2,25 @@ ENTRY(_start)
 
 SECTIONS
 {
-    /* Kernel loads at 0x1000 (4KB) */
     . = 0x1000;
     
-    .text : {
+    .text : 
+    {
         *(.text)
     }
     
-    .rodata : {
+    .rodata : 
+    {
         *(.rodata)
     }
     
-    .data : {
+    .data : 
+    {
         *(.data)
     }
     
-    .bss : {
+    .bss : 
+    {
         *(.bss)
     }
 }
