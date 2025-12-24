@@ -27,11 +27,15 @@ _IMPORTANT: Control transfers (device descriptors and string descriptors) are un
 
 ### Table of Contents
 
+- [Documentation](#documentation)
 - [Features](#features)
 - [Requirements](#requirements)
 - [Building](#building)
 - [Limitations](#limitations)
 - [Resources](#resources)
+
+## Documentation
+The documentation for the bootloader code can be found on my Medium page titled "[Writing a 32-bit x86 Bootloader from Scratch](<https://medium.com/@sumeyyaaktas/part-1-writing-a-custom-x86-bootloader-with-ehci-support-from-scratch-43cb7a5b736d>)". The documentation for the rest of the code will be up as soon as possible, and it will likely be documented using comments. 
 
 ## Features
 - Custom x86 bootloader (MBR-based)
