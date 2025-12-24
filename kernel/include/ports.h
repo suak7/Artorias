@@ -39,19 +39,22 @@ static inline void outl(uint16_t port, uint32_t data)
     __asm__ __volatile__("outl %0, %1" : : "a"(data), "Nd"(port));
 }
 
-static inline uint8_t mmio_read8(uint32_t base, uint32_t offset)
+static inline uint8_t mmio_read8(uintptr_t base, uint32_t offset)
 {
+    __asm__ __volatile__("" : : : "memory");
     return *((volatile uint8_t*)(base + offset));
 }
 
-static inline uint32_t mmio_read32(uint32_t base, uint32_t offset)
+static inline uint32_t mmio_read32(uintptr_t base, uint32_t offset)
 {
+    __asm__ __volatile__("" : : : "memory");
     return *((volatile uint32_t*)(base + offset));
 }
 
-static inline void mmio_write32(uint32_t base, uint32_t offset, uint32_t value)
+static inline void mmio_write32(uintptr_t base, uint32_t offset, uint32_t value)
 {
     *((volatile uint32_t*)(base + offset)) = value;
+    __asm__ __volatile__("" : : : "memory");
 }
 
 #endif
