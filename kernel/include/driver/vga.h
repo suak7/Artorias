@@ -25,6 +25,7 @@
 extern int vga_row;
 extern int vga_col;
 
+void clear_screen(void);
 void vga_init(void);
 void vga_print(const char* str);
 void vga_print_hex(uint32_t value);

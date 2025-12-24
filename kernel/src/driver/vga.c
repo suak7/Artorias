@@ -2,10 +2,20 @@
 #include <kernel.h>
 #include <stdint.h>
 
-
 uint8_t vga_attr;
 int vga_row;
 int vga_col;
+
+void clear_screen(void) 
+{
+    char* video = (char*)VIDEO_MEMORY;
+    
+    for (int i = 0; i < 80 * 25 * 2; i += 2) 
+    {
+        video[i] = ' ';
+        video[i + 1] = WHITE_ON_BLACK;
+    }
+}
 
 void vga_init(void) 
 {
