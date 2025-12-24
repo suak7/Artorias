@@ -20,10 +20,11 @@
 #define YELLOW 0xE
 #define WHITE 0xF
 
-#define VGA_COLOR(fg, bg) ((bg << 4) | fg)
+#define VGA_COLOR(fg, bg) (((bg) << 4) | (fg))
+#define WHITE_ON_BLACK VGA_COLOR(WHITE, BLACK)
 
-extern int vga_row;
-extern int vga_col;
+#define VGA_WIDTH 80
+#define VGA_HEIGHT 25
 
 void clear_screen(void);
 void vga_init(void);
