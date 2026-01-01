@@ -96,6 +96,15 @@ run-kbd: $(DISK_IMG)
 		-serial stdio \
 		-no-reboot
 
+run-tablet: $(DISK_IMG)
+	$(QEMU) \
+		-m 512M \
+		-drive format=raw,file=$(DISK_IMG),if=ide \
+		-device usb-ehci,id=ehci \
+		-device usb-tablet,bus=ehci.0 \
+		-serial stdio \
+		-no-reboot
+
 clean:
 	@rm -rf $(BUILD_DIR) $(IMAGE_DIR)
 
