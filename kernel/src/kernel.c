@@ -19,7 +19,7 @@ void kernel_main(void)
     serial_print("\n");
     serial_print("Kernel loaded successfully\n");
     serial_print("Scanning PCI bus...\n");
-    serial_print("Enumerating PCI devices...\n");
+    serial_print("Enumerating PCI devices...\n\n");
 
     pci_enumerate();
 
