@@ -20,6 +20,13 @@
 #define YELLOW 0xE
 #define WHITE 0xF
 
+/**
+ * This is the VGA attribute byte bitfield.
+ * In VGA text mode, every character on the screen is represented by 
+ * two bytes in memory: the ASCII character and its attribute (color). 
+ * (bg) << 4: Shifts the 4-bit background color into the upper nibble.
+ * | (fg): Combines it with the 4-bit foreground color in the lower nibble.
+ */
 #define VGA_COLOR(fg, bg) (((bg) << 4) | (fg))
 #define WHITE_ON_BLACK VGA_COLOR(WHITE, BLACK)
 

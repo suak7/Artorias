@@ -4,6 +4,14 @@
 #include <stdint.h>
 #include <stdbool.h>
 
+/**
+ * This is the  COM port base address.
+ * COM1 is the primary serial interface for x86 systems. 
+ * 0x3F8 is the industry-standard I/O port address for the first communication port.
+ * In a custom kernel, serial output is critical for headless debugging, 
+ * allowing you to stream EHCI register logs and status updates to a 
+ * separate terminal via a null-modem cable or emulator pipe.
+ */
 #define COM1 0x3F8
 
 int serial_init();
